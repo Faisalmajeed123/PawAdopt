@@ -1,0 +1,1 @@
+export const categories = ['Dog', 'Cat', 'Bird', 'Fish', 'Tiger', 'Elephants']
