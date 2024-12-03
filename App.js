@@ -1,25 +1,25 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {StyleSheet, Text, View} from 'react-native';
+import React from 'react';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Splash from './src/screens/Splash';
-import Home from './src/screens/Home';
 import Details from './src/screens/Details';
-import { NavigationContainer } from '@react-navigation/native';
-
+import {NavigationContainer} from '@react-navigation/native';
+import Profile from './src/screens/Profile';
 
 const App = () => {
-  const Stack = createNativeStackNavigator()
+  const Stack = createNativeStackNavigator();
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName='Splash'>
-        <Stack.Screen name='Splash' component={Splash} />
-        <Stack.Screen name='Home' component={Home} />
-        <Stack.Screen name='Detail' component={Details} />
+      <Stack.Navigator
+        screenOptions={{headerShown: false}}
+        initialRouteName="Splash">
+        <Stack.Screen name="Splash" component={Splash} />
+        <Stack.Screen name="Details" component={Details} />
+        <Stack.Screen name="Profile" component={Profile} />
       </Stack.Navigator>
     </NavigationContainer>
-  )
-}
+  );
+};
+export default App;
 
-export default App
-
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});

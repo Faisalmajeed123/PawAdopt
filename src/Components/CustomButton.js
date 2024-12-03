@@ -1,26 +1,54 @@
-import { Image, StyleSheet, Text, View, TouchableWithoutFeedback, Animated, TouchableOpacity } from 'react-native'
-import React, { useState } from 'react'
-import { useNavigation } from '@react-navigation/native';
+import {Image, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import React, {useState} from 'react';
+import {useNavigation} from '@react-navigation/native';
 
-const CustomButton = () => {
-    const navigation = useNavigation()
+const CustomButton = ({title = 'Get Started', iconPadding = 12}) => {
+  const navigation = useNavigation();
+  return (
+    <TouchableOpacity
+      onPress={() => navigation.navigate('Profile')}
+      style={styles.container}>
+      <View style={styles.main}>
+        <View style={styles.imgView}>
+          <Image
+            source={require('../assets/rb_6717.png')}
+            resizeMode="contain"
+            style={{width: 30, height: 30}}
+          />
+        </View>
+        <Text style={styles.titleTxt}>{title}</Text>
+      </View>
+    </TouchableOpacity>
+  );
+};
 
-    return (
-        <TouchableOpacity onPress={() => navigation.navigate('Home')} style={[{ borderRadius: 100, paddingHorizontal: 20, paddingVertical: 4, backgroundColor: 'black' }]}>
-            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 4, }}>
+export default CustomButton;
 
-                <View style={{ backgroundColor: 'white', borderRadius: 60, padding: 12, right: 16 }}>
-                    <Image
-                        source={require('../assets/rb_6717.png')}
-                        resizeMode='contain'
-                        style={{ width: 30, height: 30 }} />
-                </View>
-                <Text style={{ color: 'white', fontSize: 15, fontWeight: 'bold', right: 4 }}>Get Started</Text>
-            </View>
-        </TouchableOpacity>
-    )
-}
-
-export default CustomButton
-
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container: {
+    borderRadius: 100,
+    paddingHorizontal: 20,
+    paddingVertical: 4,
+    backgroundColor: 'black',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  main: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 4,
+  },
+  imgView: {
+    backgroundColor: 'white',
+    borderRadius: 60,
+    padding: iconPadding,
+    right: 16,
+  },
+  titleTxt: {
+    color: 'white',
+    fontSize: 15,
+    fontWeight: 'bold',
+    right: 4,
+  },
+});
